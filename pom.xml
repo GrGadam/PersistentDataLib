@@ -12,6 +12,12 @@
     <name>PersistentDataLib</name>
     <description>A library to simplify the usage of PersistentData in your projects.</description>
     <url>https://github.com/GrGadam/PersistentDataLib</url>
+    <licenses>
+        <license>
+            <name>The GNU General Public License, Version 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
 
     <properties>
         <java.version>17</java.version>
