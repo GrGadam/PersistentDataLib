@@ -6,7 +6,7 @@
 
     <groupId>me.grggamer</groupId>
     <artifactId>PersistentDataLib</artifactId>
-    <version>0.0.1</version>
+    <version>pre-1</version>
     <packaging>jar</packaging>
 
     <name>PersistentDataLib</name>
@@ -73,12 +73,6 @@
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.17.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.mojang</groupId>
-            <artifactId>authlib</artifactId>
-            <version>1.5.25</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
