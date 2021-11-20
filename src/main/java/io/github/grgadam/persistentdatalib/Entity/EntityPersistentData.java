@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
@@ -328,5 +329,100 @@ public abstract class EntityPersistentData {
     }
 
 
+    //Checking if value exists
+
+    //Integer
+    public static boolean hasIntegerDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.INTEGER);
+    }
+
+    //IntegerArray
+    public static boolean hasIntegerArrayDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.INTEGER_ARRAY);
+    }
+
+    //String
+    public static boolean hasStringDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.STRING);
+    }
+
+    //Double
+    public static boolean hasDoubleDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.DOUBLE);
+    }
+
+    //Byte
+    public static boolean hasByteDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.BYTE);
+    }
+
+    //ByteArray
+    public static boolean hasByteArrayDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.BYTE_ARRAY);
+    }
+
+    //Float
+    public static boolean hasFloatDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.FLOAT);
+    }
+
+    //Long
+    public static boolean hasLongDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.LONG);
+    }
+
+    //LongArray
+    public static boolean hasLongArrayDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.LONG_ARRAY);
+    }
+
+    //PersistentDataContainer (TagContainer)
+    public static boolean hasTagContainerDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.TAG_CONTAINER);
+    }
+
+    //PersistentDataContainerArray (TagContainerArray)
+    public static boolean hasTagContainerArrayDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.TAG_CONTAINER_ARRAY);
+    }
+
+    //Location - key
+    public static boolean hasLocationDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        return container.has(namespacedKey, PersistentDataType.STRING);
+    }
+
+    //Location - key and value
+    public static boolean hasLocationDataByKeyAndValue(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+
+
+
+        return container.has(namespacedKey, PersistentDataType.STRING);
+    }
 
 }
