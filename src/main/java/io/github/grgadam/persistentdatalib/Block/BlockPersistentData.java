@@ -1,6 +1,6 @@
-package me.grggamer.persistentdatalib.Block;
+package io.github.grgadam.persistentdatalib.Block;
 
-import me.grggamer.persistentdatalib.PersistentDataLib;
+import io.github.grgadam.persistentdatalib.PersistentDataLib;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;

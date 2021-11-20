@@ -1,4 +1,4 @@
-package me.grggamer.persistentdatalib;
+package io.github.grgadam.persistentdatalib;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

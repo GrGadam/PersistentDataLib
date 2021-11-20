@@ -1,6 +1,6 @@
 name: PersistentDataLib
 version: '${project.version}'
-main: me.grggamer.persistentdatalib.PersistentDataLib
+main: io.github.grgadam.persistentdatalib.PersistentDataLib
 api-version: 1.17
-authors: [ GrGgamer ]
+authors: [ GrGadam ]
 description: A library of useful codes for other plugins.

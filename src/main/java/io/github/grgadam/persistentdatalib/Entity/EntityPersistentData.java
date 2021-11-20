@@ -1,6 +1,6 @@
-package me.grggamer.persistentdatalib.Entity;
+package io.github.grgadam.persistentdatalib.Entity;
 
-import me.grggamer.persistentdatalib.PersistentDataLib;
+import io.github.grgadam.persistentdatalib.PersistentDataLib;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
