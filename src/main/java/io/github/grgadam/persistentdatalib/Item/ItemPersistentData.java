@@ -11,6 +11,10 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Double.parseDouble;
 import static java.lang.Float.parseFloat;
 
@@ -178,6 +182,24 @@ public abstract class ItemPersistentData {
         }
     }
 
+    //StringList (List<String>)
+    public static void addStringListData(ItemStack itemStack, String key, List<String> data){
+        try {
+            ItemMeta meta = itemStack.getItemMeta();
+            PersistentDataContainer container = meta.getPersistentDataContainer();
+            NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream out = new DataOutputStream(baos);
+            for (String element : data) {
+                out.writeUTF(element);
+            }
+            byte[] bytes = baos.toByteArray();
+            container.set(namespacedKey, PersistentDataType.BYTE_ARRAY, bytes);
+            itemStack.setItemMeta(meta);
+        } catch (NullPointerException | IOException e) {
+            plugin.getLogger().info(ChatColor.RED + "ERROR: ItemStack has no meta or empty.");
+        }
+    }
 
 
     //Getting values
@@ -411,6 +433,33 @@ public abstract class ItemPersistentData {
         return null;
     }
 
+    //StringList (List<String>)
+    public static List<String> getStringListData(ItemStack itemStack, String key){
+        PersistentDataContainer container = null;
+        NamespacedKey namespacedKey = null;
+        try{
+            ItemMeta meta = itemStack.getItemMeta();
+            container = meta.getPersistentDataContainer();
+            namespacedKey = new NamespacedKey(plugin, key);
+        } catch (NullPointerException e){
+            plugin.getLogger().info(ChatColor.RED + "ERROR: ItemStack has no meta or empty.");
+        }
+        try {
+            byte[] bytes = container.get(namespacedKey, PersistentDataType.BYTE_ARRAY);
+            List<String> list = new ArrayList<String>();
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+            DataInputStream in = new DataInputStream(bais);
+            while (in.available() > 0) {
+                String element = in.readUTF();
+                list.add(element);
+            }
+            return list;
+        } catch (NullPointerException | IOException e) {
+            plugin.getLogger().info(ChatColor.RED + "ERROR: No data was found with key: " + key + ".");
+        }
+        return null;
+    }
+
 
     //Checking if value exists
 
@@ -498,6 +547,9 @@ public abstract class ItemPersistentData {
         return container.has(namespacedKey, PersistentDataType.STRING);
     }
 
+
+
+    /*
     //Location - key and value
     public static boolean hasLocationDataByKeyAndValue(ItemStack itemStack, String key, Location location){
         PersistentDataContainer container = itemStack.getItemMeta().getPersistentDataContainer();
@@ -508,5 +560,17 @@ public abstract class ItemPersistentData {
         }
         return false;
     }
+     */
 
+
+    //Removing values
+
+    //Remove by key
+    public static void removeDataByKey(ItemStack itemStack, String key){
+        ItemMeta meta = itemStack.getItemMeta();
+        PersistentDataContainer container = meta.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        container.remove(namespacedKey);
+        itemStack.setItemMeta(meta);
+    }
 }

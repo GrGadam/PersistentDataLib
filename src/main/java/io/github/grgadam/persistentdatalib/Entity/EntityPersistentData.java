@@ -6,7 +6,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
@@ -416,13 +415,24 @@ public abstract class EntityPersistentData {
     }
 
     //Location - key and value
-    public static boolean hasLocationDataByKeyAndValue(Entity entity, String key){
+    public static Boolean hasLocationDataByKeyAndValue(Entity entity, String key, Location  location){
         PersistentDataContainer container = entity.getPersistentDataContainer();
         NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        if (container.has(namespacedKey, PersistentDataType.STRING)){
+            String[] data = container.get(namespacedKey, PersistentDataType.STRING).split(";");
+            return location.equals(new Location(Bukkit.getServer().getWorld(data[0]), parseDouble(data[1]), parseDouble(data[2]), parseDouble(data[3]), parseFloat(data[4]), parseFloat(data[5])));
+        }
+        return null;
+    }
 
 
+    //Removing values
 
-        return container.has(namespacedKey, PersistentDataType.STRING);
+    //Remove by key
+    public static void removeDataByKey(Entity entity, String key){
+        PersistentDataContainer container = entity.getPersistentDataContainer();
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        container.remove(namespacedKey);
     }
 
 }

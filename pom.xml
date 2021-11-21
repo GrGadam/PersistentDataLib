@@ -6,7 +6,7 @@
 
     <groupId>io.github.grgadam</groupId>
     <artifactId>PersistentDataLib</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.0-pre2</version>
     <packaging>jar</packaging>
 
     <name>PersistentDataLib</name>
